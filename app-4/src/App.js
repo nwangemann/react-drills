@@ -1,26 +1,54 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+class App extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      username: '',
+      password: '',
+      displayuser: '',
+      displaypass: ''
+    }
+  }
+
+  updateLogin = (val) => {
+    this.setState({
+      username: val
+    })
+  }
+
+  updatePassword = (val) => {
+    this.setState({
+      password: val
+    })
+  }
+
+  display = () => {
+    this.setState({
+      displayuser: this.state.username,
+      displaypass: this.state.password
+    })
+  }
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+      <input onChange={(e) => this.updateLogin(e.target.value)}></input>
+      <input onChange={(e) => this.updatePassword(e.target.value)}></input>
+      </div>
+      <div>
+      <button onClick={() => this.display()}>Submit!</button>
+      </div>
+      <div>
+      <span>Username: {this.state.displayuser}   Password: {this.state.displaypass}</span>
+      </div>
     </div>
   );
+  }
 }
 
 export default App;
