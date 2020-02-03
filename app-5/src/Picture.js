@@ -8,7 +8,7 @@ export default class Picture extends Component {
     }
     render(){
         return(
-            <img src={this.props.reference}></img>
+            <img src={this.props.url}></img>
         )
     }
 }
